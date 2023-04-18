@@ -1,2 +1,2 @@
-rootProject.name = "AnalyticsEvents"
+rootProject.name = "analytics-events"
 include("lib")

@@ -12,11 +12,8 @@ plugins {
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+    `maven-publish`
 }
-
-group = "im.vector.app.features.analytics.plan"
-
-version = "1.0"
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -27,5 +24,17 @@ repositories {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "im.vector.app.features.analytics.plan"
+            artifactId = "analytics-events"
+            version = "1.0.0"
+
+            from(components["java"])
+        }
     }
 }
